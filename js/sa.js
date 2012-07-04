@@ -37,7 +37,9 @@ jQuery(function ($) {
 	};
 
 	$.each(sa.urlInput, function() {
-		sa.mp3check($(this));
+		if(sa.urlInput.length > 1) {
+			sa.mp3check($(this));
+		}
 	});
 
 	$('.sa-add-new-field').click(function (e) {
