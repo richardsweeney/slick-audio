@@ -1,0 +1,161 @@
+.mp3-list {
+	margin: 20px 0;
+	list-style: none;
+}
+
+.mp3-list li {
+	background: #eee;
+	padding: 10px 10px 10px 30px;
+	margin-bottom: 10px;
+	border-radius: 1px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+	cursor: move;
+	position: relative;
+}
+
+.mp3-list li .number {
+	position: absolute;
+	left: 10px;
+	top: 18px;
+	font-size: 16px;
+	color: #999;
+	text-shadow: 1px 1px 1px #fff;
+}
+
+.sa-form input.sa-input-title, .sa-form input.sa-input-url {
+	border: none;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+	line-height: 1;
+	padding: 6px;
+}
+
+.sa-form input.sa-input-title {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 18px;
+	width: 600px;
+}
+
+.sa-form input.sa-input-url {
+	width: 400px;
+	border: 1px solid #fff;
+}
+
+.sa-form input.sa-error {
+	border-color: red;
+}
+
+.sa-add-new-field-container {
+	margin: 30px 0;
+}
+
+.sa-add-mp3 {
+	margin: 0 10px;
+}
+
+a.sa-delete {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+span.sa-error-message {
+	display: block;
+	color: red;
+	padding-top: 7px;
+}
+
+
+/* Start jPlayer */
+
+.jplayer-container {
+	margin: 30px 0;
+	position: relative;
+	max-width: 500px;
+	width: 100%;
+	background: #eee;
+	padding: 10px;
+	border-radius: 1px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+#jp-controls, ul.jp_playlist {
+	list-style: none;
+	margin-left: 0;
+}
+
+#jp-controls {
+	height: 60px;
+	margin: 0;
+}
+
+#jp-controls a {
+	display: block;
+	position: absolute;
+}
+
+#jp-controls a.jp-play, #jp-controls a.jp-pause {
+	left: 42px;
+	top: 11px;
+}
+
+#jp-controls a.jp-previous {
+	left: 10px;
+	top: 17px;
+}
+
+#jp-controls a.jp-next {
+	left: 82px;
+	top: 17px;
+}
+
+.jp-play-bar {
+	width: 100px;
+}
+
+.jp-playlist ul {
+	margin: 0;
+}
+
+.jp-playlist li {
+	margin: 0;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.jp-playlist li:nth-of-type(odd) {
+	background: #fff;
+}
+
+.jp-playlist li a {
+	text-decoration: none;
+	display: block;
+	padding: 5px;
+	color: #333;
+}
+
+li.jp-playlist-current a:before {
+	padding-right: 5px;
+	content: '*';
+}
+
+.jp-progress {
+	height: 10px;
+	background: #ddd;
+	position: absolute;
+	top: 25px; left: 120px;
+	right: 10px;
+	cursor: pointer;
+}
+
+.jp-seek-bar {
+	height: 10px;
+	background: #aaa;
+	position: ;
+}
+
+.jp-play-bar {
+	height: 10px;
+	background: #0091c0;
+}
+
+/* End jPlayer */
+
