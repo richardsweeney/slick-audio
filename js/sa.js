@@ -1,28 +1,27 @@
 jQuery(function ($) {
-	
+
 	var sa = {
 		thisInput: '',
 		urlInput: $('.sa-input-url'),
 		titleInput: $('.sa-input-title'),
-		list: $('.mp3-list').sortable({			
-			stop: function (event, ui) {
-				$.each($('.mp3-list > li'), function (i) {			
-					console.log($(this));		
-					var	id = 'sa-' + i,
-							titleName = 'mp3[' + i + '][title]',
-							urlName = 'mp3[' + i + '][url]';
-
-					$(this)
-						.attr('id', id)
-						.find('span.number').text(i + 1)
-						.find('input.sa-input-title').attr('name', titleName).end()
-						.find('input.sa-input-url').attr('name', urlName).end()
-						.find('a.sa-delete').attr('data-id', i);
-
-					console.log($(this));
-				});
+		list: $('.mp3-list').sortable({
+			stop: function(){
+				sa.sortMp3s();
 			}
 		}),
+		sortMp3s: function () {
+			$.each($('.mp3-list > li'), function (i) {
+				var	id = 'sa-' + i,
+						titleName = 'mp3[' + i + '][title]',
+						urlName = 'mp3[' + i + '][url]';
+				$(this)
+					.attr('id', id)
+					.find('span.number').text(i + 1)
+					.find('input.sa-input-title').attr('name', titleName).end()
+					.find('input.sa-input-url').attr('name', urlName).end()
+					.find('a.sa-delete').attr('data-id', i);
+			});
+		},
 		mp3check: function(input) {
 			var	url = input.val(),
 					regex = /\.mp3$/,
@@ -31,7 +30,7 @@ jQuery(function ($) {
 			if(regex.test(url)) {
 				input.removeClass('sa-error');
 			} else {
-				input.addClass('sa-error').closest('li').append($message);	
+				input.addClass('sa-error').closest('li').append($message);
 			}
 		}
 	};
@@ -57,7 +56,6 @@ jQuery(function ($) {
 			.find('.sa-delete').attr('data-id', numFields).end();
 
 		sa.list.append($newField);
-
 	});
 
 	sa.list.on('click', '.sa-delete', function () {
@@ -67,6 +65,7 @@ jQuery(function ($) {
 			opacity: 0
 		}, 300, function () {
 			$(this).remove();
+			sa.sortMp3s();
 		});
 		return false;
 	}).on('change', '.sa-input-url', function () {
@@ -79,16 +78,18 @@ jQuery(function ($) {
 			$('#submit-error').remove();
 		}
 	}).on('click', '.sa-add-mp3', function (e) {
- 		sa.thisInput = $(this).prev();
- 		formfield = sa.thisInput.attr('name');
- 		tb_show('', 'media-upload.php?type=audio&amp;TB_iframe=true');
+		sa.thisInput = $(this).prev();
+		tb_show('', 'media-upload.php?type=audio&amp;TB_iframe=true');
+    var tbframe_interval = setInterval(function () {
+       $('#TB_iframeContent').contents().find('form#filter').hide().end().find('#tab-type_url').hide();
+    }, 10);
  		e.preventDefault();
 	});
 
+
 	window.send_to_editor = function(html) {
-		console.log($(html));
  		sa.thisInput.val($(html).attr('href')).trigger('change');
- 		tb_remove();
+		tb_remove();
 	}
 
 	$('.submit-container input').click(function () {
@@ -111,28 +112,12 @@ jQuery(function ($) {
 				$(this).addClass('sa-error');
 			}
 		});
-		
+
 		if (empty === true) {
 			$message = '<span id="submit-error" class="sa-error-message">Make sure you\'ve provided a title and a URL for each track</span>';
 			$('p.submit-container').before($message);
 			return false;
 		}
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });

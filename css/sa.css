@@ -45,8 +45,9 @@
 	border-color: red;
 }
 
-.sa-add-new-field-container {
-	margin: 30px 0;
+.sa-add-new-field {
+	display: inline-block;
+	margin: 10px 10px 20px 0;
 }
 
 .sa-add-mp3 {
